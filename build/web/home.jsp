@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>PrograII - App Web</title>
+        <title>Registro Libros</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -25,7 +25,7 @@
     %>
     <body>
           
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -68,29 +68,32 @@
     
     <div class="d-flex justify-content-around">
         <div class="p-3 bd-highlight">
-        <h1>Formulario de Registro de Estudiantes</h1>
+        <h1>Formulario de Registro de Libros</h1>
         <a href="NewServlet" > Click aqui </a><br><br>
         <form method="POST" id="form" name="form" action="NewServlet" >
             <div class="form-group">
                 <label for="exampleInputName">Codigo</label>
-                <input class="form-control" type="text" placeholder="ingresar codigo" name="codigo" id="codigo" >
+                <input class="form-control" type="text" placeholder="ingresar codigo" name="codigo" id="codigo_libro" >
                 <input type="hidden" name="control" value="GUARDAR">
             </div>
             <div class="form-group">
-                <label for="exampleInputName">Nombre del alumno</label>
-                <input class="form-control" type="text" placeholder="ingresar nombre" name="nombre"id="nombre" >
+                <label for="exampleInputName">Nombre del Libro</label>
+                <input class="form-control" type="text" placeholder="ingresar nombre del Libro" name="nombre"id="nombre" >
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control"  aria-describedby="emailHelp" name="correo" id="correo"  >
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <label for="exampleInputName">Fecha de lanzamiento</label>
+                <input class="form-control" type="text" placeholder="Fecha de lanzamiento" name="fecha_lanzamiento"id="fecha_lanzamiento" >
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Direccion</label>
-              <input type="text" class="form-control"  name="direccion" id="direccion"  >
+              <label for="exampleInputPassword1">Autor</label>
+              <input type="text" class="form-control"  name="autor" id="autor"  >
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Tipo de Pasta</label>
+              <input type="selct" class="form-control"  name="tipo_pasta" id="tipo_pasta">
             </div>
             
-            <button type="submit" class="btn btn-primary">Guardar</button>
+               <button type="submit" class="btn btn-primary">Guardar</button> 
             <button type="button" onclick="enviarFormularioOpcion2()" class="btn btn-success">Guardar con JS</button>
              <button type="reset" class="btn btn-danger">Cancelar</button>
         </form>  
@@ -101,10 +104,11 @@
                 <table class="table table-striped table-hover">
                     <thead class="table-dark">
                         <tr>
-                            <td>Codigo de Estudiante</td>
-                            <td>Nombre del Estudiante</td>
-                            <td>Dirección</td>
-                            <td>Correo Institucional</td>
+                            <td>Codigo de Libro</td>
+                            <td>Nombre del Libro</td>
+                            <td>Autor</td>
+                            <td>Fecha de Lanzamiento</td>
+                            <td>Tipo de Pasta</td>
                             <td>Acción</td>
                         </tr>
                     </thead>

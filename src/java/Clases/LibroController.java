@@ -14,26 +14,26 @@ import java.sql.SQLException;
  *
  * @author JP
  */
-public class AlumnoController {
-      Alumno[] tablaALumno;
+public class LibroController {
+      Libro[] tablaALumno;
     int indiceArray;
     private ConexionBaseDeDatos conectorBD;
     private Connection conexion;
     private PreparedStatement statement = null;
     private ResultSet result = null;
     
-    public AlumnoController(){
-        this.tablaALumno = new Alumno[100];
+    public LibroController(){
+        this.tablaALumno = new Libro[100];
         this.indiceArray=0;
     }
     
-     public void guardarAlumno(Alumno alumno){
+     public void guardarAlumno(Libro alumno){
         this.tablaALumno[this.indiceArray]=alumno;  
         this.indiceArray=this.indiceArray+1;
         // procedimiento para almacenar en la Base de Datos
     }
     
-    public Alumno[] getAlumnos(){
+    public Libro[] getAlumnos(){
         return this.tablaALumno;
     }
     
@@ -43,16 +43,16 @@ public class AlumnoController {
     }    
    
     
-    public String guardarAlumno2(Alumno alumno){        
-        String sql = "INSERT INTO pruebausuario.estudiante(codigo, nombre, correo, direccion)";
+    public String guardarAlumno2(Libro alumno){        
+        String sql = "INSERT INTO final_progra.libro(codigo_libro, nombre, fecha_lanzamiento, autor)";
                sql += "VALUES(?,?,?,?)";              
        try{     
             abrirConexion();
             statement = conexion.prepareStatement(sql); 
-            statement.setInt(1, alumno.getCodigo());
+            statement.setInt(1, alumno.getCodigo_libro());
             statement.setString(2, alumno.getNombre());
-            statement.setString(3, alumno.getCorreo());
-            statement.setString(4, alumno.getDireccion());
+            statement.setString(3, alumno.getFecha_lanzamiento());
+            statement.setString(4, alumno.getAutor());
             
                 int resultado = statement.executeUpdate(); 
                 if(resultado > 0){
@@ -66,7 +66,7 @@ public class AlumnoController {
     }
     
     public void getAlumnos2(StringBuffer respuesta){   
-        String sql="SELECT * FROM pruebausuario.estudiante;";
+        String sql="SELECT * FROM final_progra.libro;";
         try{
         abrirConexion();
         statement= conexion.prepareStatement(sql);                        
@@ -74,10 +74,10 @@ public class AlumnoController {
             if (result!=null){
                 while (result.next()){
                 respuesta.append("<tr>");
-                respuesta.append("<td >").append(result.getString("codigo")).append("</td>");
+                respuesta.append("<td >").append(result.getString("codigo_libro")).append("</td>");
                 respuesta.append("<td >").append(result.getString("nombre")).append("</td>");
-                respuesta.append("<td >").append(result.getString("direccion")).append("</td>");
-                respuesta.append("<td >").append(result.getString("correo")).append("</td>");
+                respuesta.append("<td >").append(result.getString("fecha_lanzamiento")).append("</td>");
+                respuesta.append("<td >").append(result.getString("autor")).append("</td>");
                 respuesta.append("<td id=\"").append(result.getString("codigo"))
                         .append("\"  onclick=\"eliminarAlumno(this.id);\">") 
                          //.append("\"  onclick=\"eliminarAlumno("+result.getString("numero_carne")+");\">") 
@@ -95,7 +95,7 @@ public class AlumnoController {
     }
     
     public String eliminarALumno(int codigo){        
-        String sql = "DELETE FROM alumno WHERE codigo="+codigo;              
+        String sql = "DELETE FROM libro WHERE codigo="+codigo;              
        try{     
             abrirConexion();
             statement = conexion.prepareStatement(sql); 

@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author JP
+ * @author mgeoh
  */
 public class Usuario {
     private ConexionBaseDeDatos conectorBD;
@@ -26,7 +26,7 @@ public class Usuario {
     }
     
     public String validarUsuario(String user, String pass){
-        String sql = "SELECT * FROM usuario WHERE usuario = '" + user + "' AND contrasenia = '"+pass+"'";
+        String sql = "SELECT * FROM final_progra.usuario WHERE usuario = '" + user + "' AND contrasenia = '"+pass+"'";
         try{
             this.conexion = this.conectorBD.conectar();
             this.statement = conexion.prepareStatement(sql);

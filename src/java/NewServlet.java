@@ -4,8 +4,8 @@
  */
 
 
-import Clases.Alumno;
-import Clases.AlumnoController;
+import Clases.Libro;
+import Clases.LibroController;
 import Clases.ConexionBaseDeDatos;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,9 +21,9 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/NewServlet"})
 public class NewServlet extends HttpServlet {
-    Alumno alumno;
-    AlumnoController registroAlumno;
-     Alumno[] alumnosRegistrados;
+    Libro alumno;
+    LibroController registroAlumno;
+     Libro[] alumnosRegistrados;
      StringBuffer objetoRespuesta = new StringBuffer();
     
     /**
@@ -49,11 +49,11 @@ public class NewServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter respuesta = response.getWriter()) {            
            
-           registroAlumno=new AlumnoController();
+           registroAlumno=new LibroController();
            String control = request.getParameter("control");
            
            if(control.toUpperCase().equals("GUARDAR")){
-               alumno=new Alumno(
+               alumno=new Libro(
                 Integer.parseInt(request.getParameter("codigo")),
                 request.getParameter("nombre"),
                 request.getParameter("correo"),
@@ -74,11 +74,11 @@ public class NewServlet extends HttpServlet {
            
             for (int i = 0; i < alumnosRegistrados.length; i++){
                    //if(!alumnosRegistrados[i].getCodigo().isEmpty()){
-                    if(alumnosRegistrados[i].getCodigo()>0){
-                       respuesta.println("<tr><td>" + alumnosRegistrados[i].getCodigo()+ "</td>");
+                    if(alumnosRegistrados[i].getCodigo_libro()>0){
+                       respuesta.println("<tr><td>" + alumnosRegistrados[i].getCodigo_libro()+ "</td>");
                        respuesta.println("<td>" + alumnosRegistrados[i].getNombre() + "</td>");
-                       respuesta.println("<td>" + alumnosRegistrados[i].getDireccion()+ "</td>");
-                       respuesta.println("<td>" + alumnosRegistrados[i].getCorreo()+ "</td>");
+                       respuesta.println("<td>" + alumnosRegistrados[i].getFecha_lanzamiento()+ "</td>");
+                       respuesta.println("<td>" + alumnosRegistrados[i].getAutor()+ "</td>");
                        respuesta.println("<td>"
                                + "<button type=\"button\" class=\"btn btn-warning\"></i>Editar</button> "
                                + "<button type=\"button\" class=\"btn btn-danger\">Eliminar</button>"
