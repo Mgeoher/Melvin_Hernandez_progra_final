@@ -56,8 +56,8 @@ public class NewServlet extends HttpServlet {
                alumno=new Libro(
                 Integer.parseInt(request.getParameter("codigo")),
                 request.getParameter("nombre"),
-                request.getParameter("correo"),
-                request.getParameter("direccion"));                
+                request.getParameter("fecha_lanzamiento"),
+                request.getParameter("autor"));                
                 registroAlumno.guardarAlumno2(alumno);//almacenarlo en BD                 
            }else if(control.toUpperCase().equals("ELIMINAR")){
                int codigoEliminar= Integer.parseInt(request.getParameter("codigo_alumno"));

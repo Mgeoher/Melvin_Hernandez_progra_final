@@ -89,8 +89,11 @@
               <input type="text" class="form-control"  name="autor" id="autor"  >
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Tipo de Pasta</label>
-              <input type="selct" class="form-control"  name="tipo_pasta" id="tipo_pasta">
+                <label for="disabledSelect">Tipo de Pasta</label>
+            <select id="tipo_pasta" class="form-control">
+            <option>BLANDA</option>
+            <option>GRUESA</option>
+            </select>
             </div>
             
                <button type="submit" class="btn btn-primary">Guardar</button> 
